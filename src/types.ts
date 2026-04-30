@@ -1,4 +1,4 @@
-import type { Context, SessionFlavor } from "grammy";
+import type { Context } from "grammy";
 import type { Message } from "grammy/types";
 
 export interface UserSettings {
@@ -16,8 +16,4 @@ export interface StoredMessage {
   data: Message;
 }
 
-export interface SessionData {
-  language: string;
-}
-
-export type BotContext = Context & SessionFlavor<SessionData>;
+export type BotContext = Context;

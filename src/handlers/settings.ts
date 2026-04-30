@@ -1,9 +1,6 @@
+import { InlineKeyboard } from "grammy";
 import type { BotContext } from "../types.js";
-import {
-  getSettings,
-  updateSettings,
-  getConnectionOwner,
-} from "../services/redis.js";
+import { getSettings, updateSettings } from "../services/redis.js";
 import { t } from "../services/i18n.js";
 import {
   mainMenu,
@@ -37,7 +34,7 @@ export async function onCallbackQuery(ctx: BotContext): Promise<void> {
   if (data === "menu:howToConnect") {
     await ctx.editMessageText(s.howToConnect, {
       parse_mode: "Markdown",
-      reply_markup: new (await import("grammy")).InlineKeyboard().text(
+      reply_markup: new InlineKeyboard().text(
         s.btnBack,
         "menu:back"
       ),
@@ -49,7 +46,7 @@ export async function onCallbackQuery(ctx: BotContext): Promise<void> {
   if (data === "menu:howItWorks") {
     await ctx.editMessageText(s.howItWorks, {
       parse_mode: "Markdown",
-      reply_markup: new (await import("grammy")).InlineKeyboard().text(
+      reply_markup: new InlineKeyboard().text(
         s.btnBack,
         "menu:back"
       ),
