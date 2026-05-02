@@ -13,6 +13,9 @@ if (!process.env.BOT_TOKEN) {
 
 export const bot = new Bot<BotContext>(process.env.BOT_TOKEN);
 
+// Initialize once per serverless instance (cached after first cold start)
+export const botReady: Promise<void> = bot.init();
+
 bot.command("start", onStart);
 
 bot.on("business_connection", onBusinessConnect);
